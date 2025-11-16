@@ -1,5 +1,8 @@
 #!/bin/sh
 
+echo "󰞌 $(date '+%R %a %b-%d-%Y')"
+
+<<COMMENT
 clock="$(date +%R)"
 case $clock in
 	[0][0]:[0-2][0-9]) echo "🕛 $(date '+%R %a %b-%d-%Y')";;
@@ -51,3 +54,4 @@ case $clock in
 	[2][3]:[0-2][0-9]) echo "🕚 $(date '+%R %a %b-%d-%Y')";;
 	[2][3]:[3-5][0-9]) echo "🕦 $(date '+%R %a %b-%d-%Y')";;
 esac
+COMMENT
