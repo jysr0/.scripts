@@ -1,6 +1,7 @@
 #!/bin/sh
 
-[[ (-d $XDG_PICTURES_DIR) && (-d $XDG_PICTURES_DIR/backgrounds) ]] || exit 1
-[[ -d $XDG_CACHE_HOME ]] || exit 1
-	bg="$(ls -A $XDG_PICTURES_DIR/backgrounds | dmenu -i -l 10 -p '󰸉 set background:')"
-	xwallpaper --stretch $XDG_PICTURES_DIR/backgrounds/$bg && cp $XDG_PICTURES_DIR/backgrounds/$bg $XDG_CACHE_HOME/bg.jpg
+dir="backgrounds"
+[[ -d $XDG_PICTURES_DIR/$dir ]] || (notify-send "'$dir' directory doesn't exist" && exit 1)
+[[ -d $XDG_CACHE_HOME ]] || (notify-send "create home 'cache' directory and try again" && exit 1)
+	bg="$(ls -A $XDG_PICTURES_DIR/$dir | dmenu -i -l 10 -p '󰸉 set background:')"
+	xwallpaper --stretch $XDG_PICTURES_DIR/$dir/$bg && cp $XDG_PICTURES_DIR/$dir/$bg $XDG_CACHE_HOME/bg.jpg
