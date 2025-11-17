@@ -1,6 +1,7 @@
 #!/bin/sh
 
-echo "󰞌 $(date '+%R %a %b-%d-%Y')"
+#echo "󰞌 $(date '+%R %a %b-%d-%Y')"
+echo "󰞌 $(date '+%R %a %b-%d')"
 
 <<COMMENT
 clock="$(date +%R)"
