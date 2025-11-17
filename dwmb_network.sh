@@ -15,6 +15,8 @@
 # 󰤬 󰤡 󰤤 󰤧 󰤪       #LOCKED
 # 󱛏 󱛋 󱛌 󱛍 󱛎       #UNLOCKED
 
+#[[ -s "/tmp/recent_conn" ]] && cat /dev/null > /tmp/recent_conn #flush its content
+
 wlpstat="$(cat /sys/class/net/[Ww]*/operstate)"
 enpstat="$(cat /sys/class/net/[Ee]*/operstate)"
 
