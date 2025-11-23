@@ -15,7 +15,7 @@ if [[ $stat == "Charging" ]]; then
 		[7][0-9]) echo "󰂊 $capacity%";;
 		[8][0-9]) echo "󰂋 $capacity%";;
 		[9][0-9]) echo "󰂅 $capacity%";;
-		100) echo "󰂅 $capacity%";;
+		100) echo " $capacity%";;
 	esac
 fi
 
