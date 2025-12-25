@@ -8,7 +8,7 @@ vol="$(pamixer --get-volume)"
 volhuman="$(pamixer --get-volume-human)"
 
 if [[ $mute == "true" ]]; then
-	echo "󰝟"
+	echo "󰖁"
 fi
 
 case $vol in
