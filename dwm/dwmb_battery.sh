@@ -3,6 +3,10 @@
 capacity=$(cat /sys/class/power_supply/*BAT*/capacity)
 stat=$(cat /sys/class/power_supply/*BAT*/status)
 
+if ([[ $stat == "Discharging" ]] && [[ $capacity -lt 30 ]]); then
+		notify-send -u critical 'Low Battery'
+fi
+
 if [[ $stat == "Charging" ]]; then
 	case $capacity in
 		 [0-9]) echo "󰢜 $capacity%";;
