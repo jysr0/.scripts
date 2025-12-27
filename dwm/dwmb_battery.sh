@@ -1,11 +1,9 @@
 #!/bin/sh
 
 capacity=$(cat /sys/class/power_supply/*BAT*/capacity)
-stat=$(cat /sys/class/power_supply/*BAT*/status)
+stat=$(cat /sys/class/power_supply/*BAT*/status) # one of: Full Discharging Charging Not charging Unknown
 
-if ([[ $stat == "Discharging" ]] && [[ $capacity -le 30 ]]); then
-		notify-send -u critical 'Low Battery'
-fi
+[[ $stat == "Discharging" ]] && [[ $capacity -le 30 ]] && notify-send -u critical '❗Low Battery'
 
 if [[ $stat == "Charging" ]]; then
 	case $capacity in
@@ -32,7 +30,7 @@ case $capacity in
 	[5][0-9]) echo "󰁿 $capacity%";;
 	[4][0-9]) echo "󰁾 $capacity%";;
 	[3][0-9]) echo "󰁽 $capacity%";;
-	[2][0-9]) echo "•󰁼 $capacity%";;
-	[1][0-9]) echo "•󰁻 $capacity%";;
-	 [0-9]) echo "•󰁺 $capacity%";;
+	[2][0-9]) echo "❗󰁼 $capacity%";;
+	[1][0-9]) echo "❗󰁻 $capacity%";;
+	 [0-9]) echo "❗󰁺 $capacity%";;
 esac
