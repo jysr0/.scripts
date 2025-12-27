@@ -21,4 +21,4 @@ update() {
 rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
 tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 
-printf "󰜮 %1sB 󰜷 %1sB\n" $(numfmt --to=iec $rx $tx)
+printf "󰜮%1sB 󰜷%1sB\n" $(numfmt --to=iec $rx $tx)
