@@ -1,6 +1,6 @@
 #!/bin/sh
 
-file="awesome icons"
+file="awesome_icons"
 [[ -f $XDG_DOCUMENTS_DIR/"$file" ]] || (notify-send "'$file' file does not exist!" && exit 1)
 icon=$(cat $XDG_DOCUMENTS_DIR/"$file" | dmenu -i -l 10 -p ' copy icon:')
 [[ -n "$icon" ]] || exit 0
