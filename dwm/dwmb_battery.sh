@@ -3,8 +3,6 @@
 capacity=$(cat /sys/class/power_supply/*BAT*/capacity)
 stat=$(cat /sys/class/power_supply/*BAT*/status) # one of: Full Discharging Charging Not charging Unknown
 
-[[ $stat == "Discharging" ]] && [[ $capacity -le 30 ]] && notify-send -u critical '❗Low Battery'
-
 if [[ $stat == "Charging" ]]; then
 	case $capacity in
 		 [0-9]) echo "󰢜 $capacity%";;
@@ -29,7 +27,8 @@ case $capacity in
 	[6][0-9]) echo "󰂀 $capacity%";;
 	[5][0-9]) echo "󰁿 $capacity%";;
 	[4][0-9]) echo "󰁾 $capacity%";;
-	[3][0-9]) echo "󰁽 $capacity%";;
+	[3][1-9]) echo "󰁽 $capacity%";;
+	30) echo "❗󰁽 $capacity%" && notify-send -u critical '❗Low Battery';;
 	[2][0-9]) echo "❗󰁼 $capacity%";;
 	[1][0-9]) echo "❗󰁻 $capacity%";;
 	 [0-9]) echo "❗󰁺 $capacity%";;
