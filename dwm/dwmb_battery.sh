@@ -1,7 +1,7 @@
 #!/bin/sh
 
 capacity=$(cat /sys/class/power_supply/*BAT*/capacity)
-stat=$(cat /sys/class/power_supply/*BAT*/status) # one of: Full Discharging Charging Not charging Unknown
+stat=$(cat /sys/class/power_supply/*BAT*/status) # one of: Full, Discharging, Charging, Not charging, Unknown
 
 if [[ $stat == "Charging" ]]; then
 	case $capacity in
