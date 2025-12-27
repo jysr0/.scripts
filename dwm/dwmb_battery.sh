@@ -28,7 +28,7 @@ case $capacity in
 	[5][0-9]) echo "󰁿 $capacity%";;
 	[4][0-9]) echo "󰁾 $capacity%";;
 	[3][1-9]) echo "󰁽 $capacity%";;
-	30) echo "❗󰁽 $capacity%" && notify-send -u critical '❗Low Battery' && sleep 300;;
+	30) echo "❗󰁽 $capacity%";;
 	[2][0-9]) echo "❗󰁼 $capacity%";;
 	[1][0-9]) echo "❗󰁻 $capacity%";;
 	 [0-9]) echo "❗󰁺 $capacity%";;
