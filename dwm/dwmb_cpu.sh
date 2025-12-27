@@ -1,9 +1,12 @@
 #!/bin/sh
 
 #     
-temp=$(sensors | tr -d '+' | awk '/^Package/ {print $4}')
-echo " $temp"
-#usage=$(mpstat -u | awk '/all/ {print $4}' | awk -F'.' '{print $1}')
+
+temp=$(sensors | awk '/^Package/ {print $4}' | awk -F'.' '{print $1}' | tr -d '+')
+usage=$(mpstat -u | awk '/all/ {print $4}' | awk -F'.' '{print $1}')
+
+echo " $usage% $temp°C"
+
 #case $temp in
 #	 [0-9].[0-9]°[Cc]) echo " $usage%  $temp";;
 #	[1][0-9].[0-9]°[Cc]) echo " $usage%  $temp";;
