@@ -32,6 +32,7 @@ for bat in /sys/class/power_supply/*BAT* ; do
 							[7][0-9]) echo "󰂊 $capacity%";;
 							[8][0-9]) echo "󰂋 $capacity%";;
 							[9][0-9]) echo "󰂅 $capacity%";;
+							100) echo " $capacity%";;
 						esac;;
 			"Not charging") echo '🔌';;
 			"Unknown");;
