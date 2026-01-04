@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#printf "󰞌 $(date '+%R %a %b-%d-%Y')"
+printf "$(date '+ %b/%d %a 󰞌 %R')"

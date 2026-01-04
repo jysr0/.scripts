@@ -1,0 +1,40 @@
+#!/bin/sh
+
+for bat in /sys/class/power_supply/*BAT* ; do
+	#[[ -n "${capacity+x}" ]] && printf "|" # prints | separator if battery is not the first.
+	[[ -n "$capacity" ]] && printf "|" # prints | separator if battery is not the first.
+	capacity="$(cat $bat/capacity)"
+	stat="$(cat $bat/status)" # one of: Full, Discharging, Charging, Not charging, Unknown
+	case $stat in 
+			"Full") printf " $capacity%%";;
+			"Discharging") case $capacity in
+								100) printf "󰁹 $capacity%%";;
+								[9][0-9]) printf "󰁹  $capacity%%";;
+								[8][0-9]) printf "󰂂  $capacity%%";;
+								[7][0-9]) printf "󰂁  $capacity%%";;
+								[6][0-9]) printf "󰂀  $capacity%%";;
+								[5][0-9]) printf "󰁿  $capacity%%";;
+								[4][0-9]) printf "󰁾  $capacity%%";;
+								[3][1-9]) printf "󰁽  $capacity%%";;
+								30) printf "❗󰁽 $capacity%%";;
+								[2][0-9]) printf "❗󰁼 $capacity%%";;
+								[1][0-9]) printf "❗󰁻 $capacity%%";;
+	 							[0-9]) printf "❗󰁺  $capacity%%";;
+						   esac;;
+			"Charging") case $capacity in
+		 					[0-9]) printf "󰢜   $capacity%%";;
+							[1][0-9]) printf "󰂆  $capacity%%";;
+							[2][0-9]) printf "󰂆  $capacity%%";;
+							[3][0-9]) printf "󰂈  $capacity%%";;
+							[4][0-9]) printf "󰢝  $capacity%%";;
+							[5][0-9]) printf "󰂉  $capacity%%";;
+							[6][0-9]) printf "󰢞  $capacity%%";;
+							[7][0-9]) printf "󰂊  $capacity%%";;
+							[8][0-9]) printf "󰂋  $capacity%%";;
+							[9][0-9]) printf "󰂅  $capacity%%";;
+							100) printf " $capacity%%";;
+						esac;;
+			"Not charging") echo '🔌';;
+			"Unknown");;
+	esac
+done

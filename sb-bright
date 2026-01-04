@@ -1,0 +1,24 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) brightnessctl -q s 1%;;
+	3) brightnessctl -q s 100%;;
+	4) brightnessctl -q -e2 -n10 s 5%-;;
+	5) brightnessctl -q -e2 s 5%+;;
+esac
+
+brightness="$(($(cat /sys/class/backlight/intel_backlight/brightness) * 100 / $(cat /sys/class/backlight/intel_backlight/max_brightness)))"
+
+case $brightness in
+	 [0-9]) printf "   $brightness%%";;
+	[1][0-9]) printf "  $brightness%%";;
+	[2][0-9]) printf "  $brightness%%";;
+	[3][0-9]) printf "  $brightness%%";;
+	[4][0-9]) printf "  $brightness%%";;
+	[5][0-9]) printf "  $brightness%%";;
+	[6][0-9]) printf "  $brightness%%";;
+	[7][0-9]) printf "  $brightness%%";;
+	[8][0-9]) printf "  $brightness%%";;
+	[9][0-9]) printf "  $brightness%%";;
+	100) printf " $brightness%%";;
+esac
