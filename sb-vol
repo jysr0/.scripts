@@ -3,7 +3,8 @@
 # 󰕿 󰖀 󰕾 󰸈 󰖁 󰝟 󰝞 󰝝 󱄠 󱄡 #SINK
 # 󰍬 󰍮 󰢳 󰢴 󰍭 󱦉 󱦊 󰍯 󰍰 󰍱 #SOURCE
 
-case $BUTTON in
+# try $BLOCK_BUTTON and $BUTTON
+case $BLOCK_BUTTON in
 	1) pamixer -t;;
 	3) pamixer --set-volume 100;;
 	4) pamixer -d 2;; 
